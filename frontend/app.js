@@ -1,5 +1,5 @@
 // Industry News Scanner Frontend
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = '';  // Use relative path for deployment compatibility
 // #region agent log
 fetch('http://127.0.0.1:7245/ingest/1bd910ba-ebaa-4b1e-9bd3-de653771c99d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.js:2',message:'API_BASE_URL initialized',data:{apiBaseUrl:API_BASE_URL},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
 // #endregion
