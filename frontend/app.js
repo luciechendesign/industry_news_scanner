@@ -43,6 +43,11 @@ async function startScan() {
         // #region agent log
         fetch('http://127.0.0.1:7245/ingest/1bd910ba-ebaa-4b1e-9bd3-de653771c99d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.js:38',message:'Fetch attempt started',data:{requestUrl:requestUrl},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
         // #endregion
+        
+        // Create AbortController for timeout (5 minutes)
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5 * 60 * 1000); // 5 minutes timeout
+        
         const response = await fetch(requestUrl, {
             method: 'POST',
             headers: {
@@ -51,7 +56,10 @@ async function startScan() {
             body: JSON.stringify({
                 search_source: searchSource
             }),
+            signal: controller.signal
         });
+        
+        clearTimeout(timeoutId);
         // #region agent log
         fetch('http://127.0.0.1:7245/ingest/1bd910ba-ebaa-4b1e-9bd3-de653771c99d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.js:46',message:'Fetch response received',data:{status:response.status,statusText:response.statusText,ok:response.ok,headers:Object.fromEntries(response.headers.entries())},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
         // #endregion
@@ -69,7 +77,17 @@ async function startScan() {
         // #region agent log
         fetch('http://127.0.0.1:7245/ingest/1bd910ba-ebaa-4b1e-9bd3-de653771c99d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.js:57',message:'Fetch error caught',data:{errorName:error.name,errorMessage:error.message,errorStack:error.stack,errorType:typeof error},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
         // #endregion
-        showError(`Scan failed: ${error.message}. Make sure the backend server is running at ${API_BASE_URL}`);
+        
+        let errorMessage = 'Scan failed: ';
+        if (error.name === 'AbortError') {
+            errorMessage += 'Request timed out. The scan may take longer than expected. Please try again or check if the backend is processing the request.';
+        } else if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+            errorMessage += `Network error. Please check your connection and ensure the backend is accessible.`;
+        } else {
+            errorMessage += error.message;
+        }
+        
+        showError(errorMessage);
     } finally {
         hideLoading();
         enableButton();
