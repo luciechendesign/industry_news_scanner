@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry News Scanner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Industry News Scanner</h1>
+            <p class="subtitle">Two-Stage Scan Workflow for Strategic News Analysis</p>
+        </header>
+
+        <main>
+            <div class="control-panel">
+                <div class="search-source-selector">
+                    <label class="selector-label">搜索源:</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="searchSource" value="rss" checked>
+                            <span>RSS 源</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="searchSource" value="web">
+                            <span>网络搜索</span>
+                        </label>
+                    </div>
+                </div>
+                <button id="scanButton" class="scan-button">
+                    <span class="button-text">Start Scan</span>
+                    <span class="button-icon">🔍</span>
+                </button>
+                <div id="loadingIndicator" class="loading-indicator hidden">
+                    <div class="spinner"></div>
+                    <span>Scanning... This may take a few minutes</span>
+                </div>
+            </div>
+
+            <div id="errorMessage" class="error-message hidden"></div>
+
+            <div id="reportContainer" class="report-container hidden">
+                <div class="report-header">
+                    <h2>Scan Report</h2>
+                    <div class="report-meta">
+                        <span id="scanTimestamp"></span>
+                        <span id="totalItems"></span>
+                        <button id="copyJsonButton" class="copy-button">Copy JSON</button>
+                    </div>
+                </div>
+
+                <div class="importance-summary">
+                    <div class="summary-item high">
+                        <span class="summary-label">High</span>
+                        <span id="highCount" class="summary-count">0</span>
+                    </div>
+                    <div class="summary-item medium">
+                        <span class="summary-label">Medium</span>
+                        <span id="mediumCount" class="summary-count">0</span>
+                    </div>
+                    <div class="summary-item low">
+                        <span class="summary-label">Low</span>
+                        <span id="lowCount" class="summary-count">0</span>
+                    </div>
+                </div>
+
+                <div id="reportContent" class="report-content">
+                    <!-- Report items will be inserted here -->
+                </div>
+            </div>
+
+            <div id="emptyState" class="empty-state">
+                <p>Click "Start Scan" to begin analyzing industry news</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+

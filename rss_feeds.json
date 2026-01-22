@@ -1,0 +1,77 @@
+[
+  {
+    "name": "Sellozo Blog",
+    "url": "http://sellozo.com/blog-feed.xml",
+    "category": "卖家玩法"
+  },
+  {
+    "name": "Jungle Scout - Amazon Seller Blog",
+    "url": "https://www.junglescout.com/resources/amazon-seller-blog/feed/",
+    "category": "卖家玩法"
+  },
+  {
+    "name": "Ad Badger Blog",
+    "url": "https://adbadger.com/feed/",
+    "category": "卖家玩法"
+  },
+  {
+    "name": "Amazon Ads Blog",
+    "url": "https://advertising.amazon.com/resources/blog/feed",
+    "category": "平台规则"
+  },
+  {
+    "name": "IAB Tech Lab",
+    "url": "https://iabtechlab.com/feed/",
+    "category": "平台规则"
+  },
+  {
+    "name": "Meta Newsroom (About Facebook)",
+    "url": "https://about.fb.com/feed/",
+    "category": "平台规则"
+  },
+  {
+    "name": "Google Ads Blog",
+    "url": "https://blog.google/technology/ads/rss",
+    "category": "平台规则"
+  },
+  {
+    "name": "Traackr Blog",
+    "url": "https://www.traackr.com/blog/rss.xml",
+    "category": "红人生态"
+  },
+  {
+    "name": "Influencer Marketing Hub - News",
+    "url": "https://influencermarketinghub.com/feed/influencer-marketing-news/",
+    "category": "红人生态"
+  },
+  {
+    "name": "AdExchanger",
+    "url": "https://www.adexchanger.com/feed/",
+    "category": "工具链"
+  },
+  {
+    "name": "Marketing Dive",
+    "url": "https://www.marketingdive.com/feeds/site.xml",
+    "category": "工具链"
+  },
+  {
+    "name": "EcommerceBytes",
+    "url": "https://www.ecommercebytes.com/feed",
+    "category": "卖家玩法"
+  },
+  {
+    "name": "Content Marketing Institute",
+    "url": "https://contentmarketinginstitute.com/feed",
+    "category": "卖家玩法"
+  },
+  {
+    "name": "eMarketer (Insider Intelligence)",
+    "url": "https://www.emarketer.com/contentrss.xml",
+    "category": "工具链"
+  },
+  {
+    "name": "Econsultancy",
+    "url": "https://econsultancy.com/feed/",
+    "category": "工具链"
+  }
+]
